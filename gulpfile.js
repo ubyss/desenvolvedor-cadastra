@@ -24,6 +24,9 @@ const paths = {
   html: {
     src: "src/index.html",
   },
+  components: {
+    watch: "src/components/**/*.tsx",
+  },
   dest: "dist",
   temp: ".tmp",
 };
@@ -95,6 +98,10 @@ const dev = () => {
   watch(paths.styles.src, { ignoreInitial: false }, styles);
   watch(paths.img.src, { ignoreInitial: false }, img);
   watch(paths.html.src, { ignoreInitial: false }, html).on(
+    "change",
+    browserSync.reload
+  );
+  watch(paths.components.watch, { ignoreInitial: false }, scripts).on(
     "change",
     browserSync.reload
   );
